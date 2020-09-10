@@ -1,5 +1,6 @@
 package core.abstractions;
 
 public interface IPieceMovement {
-    boolean canMove(ICell currentCell, ICell newCell);
+    boolean canMove(IBoard board, ICell currentCell, ICell newCell);
+    void move();
 }

@@ -3,5 +3,7 @@ package core.abstractions;
 public interface ICell {
     int getX();
     int getY();
-    IPiece setPiece(IPiece piece);
+    IPiece getPiece();
+    void setPiece(IPiece piece);
+    boolean isEmpty();
 }
