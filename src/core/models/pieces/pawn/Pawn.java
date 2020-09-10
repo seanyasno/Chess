@@ -8,9 +8,9 @@ public class Pawn implements IPiece {
     private final PieceType pieceType;
     private final IPieceMovement movement;
 
-    public Pawn(PieceType pieceType, IPieceMovement movement) {
+    public Pawn(PieceType pieceType) {
         this.pieceType = pieceType;
-        this.movement = movement;
+        this.movement = new PawnMovement();
     }
 
     @Override

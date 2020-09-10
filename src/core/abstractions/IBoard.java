@@ -1,6 +1,7 @@
 package core.abstractions;
 
 public interface IBoard {
+    void init();
     ICell[][] getCells();
     int getWidth();
     int getHeight();
