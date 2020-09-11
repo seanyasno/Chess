@@ -4,7 +4,7 @@ import core.abstractions.IBoard;
 import core.abstractions.IPiece;
 import main.abstractions.IBoardPrinter;
 import main.abstractions.IPrintPiece;
-import main.models.printPieces.PawnPrintPiece;
+import main.models.printPieces.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +15,11 @@ public class BoardPrinter implements IBoardPrinter {
     public BoardPrinter() {
         printPieces = new HashMap<>();
         printPieces.put("Pawn", new PawnPrintPiece());
+        printPieces.put("Rook", new RookPrintPiece());
+        printPieces.put("Bishop", new BishopPrintPiece());
+        printPieces.put("Knight", new KnightPrintPiece());
+        printPieces.put("Queen", new QueenPrintPiece());
+        printPieces.put("King", new KingPrintPiece());
     }
 
     @Override

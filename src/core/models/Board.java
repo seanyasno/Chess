@@ -1,20 +1,18 @@
 package core.models;
 
-import core.abstractions.IBoard;
-import core.abstractions.ICell;
-import core.abstractions.IPiece;
-import core.enums.PieceType;
-import core.models.pieces.pawn.Pawn;
+import core.abstractions.*;
 
 public class Board implements IBoard {
-    private ICell[][] cells;
+    private final ICell[][] cells;
     private final int width;
     private final int height;
+    private final IBoardReset boardReset;
 
     public Board() {
         this.width = 8;
         this.height = 8;
         this.cells = new ICell[width][height];
+        boardReset = new BoardReset();
     }
 
     @Override
@@ -69,17 +67,10 @@ public class Board implements IBoard {
 
     @Override
     public void reset() {
-        for (int y = 0; y < width; y++) {
-            cells[1][y].setPiece(new Pawn(PieceType.WHITE));
-            cells[height-2][y].setPiece(new Pawn(PieceType.BLACK));
-        }
+        boardReset.reset(this);
     }
 
     private void cleanBoard() {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                cells[x][y].setPiece(null);
-            }
-        }
+        boardReset.clean(this);
     }
 }

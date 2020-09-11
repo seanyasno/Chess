@@ -1,30 +1,10 @@
 package core.models.pieces.pawn;
 
-import core.abstractions.IPiece;
-import core.abstractions.IPieceMovement;
+import core.abstractions.PieceBase;
 import core.enums.PieceType;
 
-public class Pawn implements IPiece {
-    private final PieceType pieceType;
-    private final IPieceMovement movement;
-
+public class Pawn extends PieceBase {
     public Pawn(PieceType pieceType) {
-        this.pieceType = pieceType;
-        this.movement = new PawnMovement();
-    }
-
-    @Override
-    public String getName() {
-        return "Pawn";
-    }
-
-    @Override
-    public PieceType getPieceType() {
-        return pieceType;
-    }
-
-    @Override
-    public IPieceMovement getMovement() {
-        return movement;
+        super("Pawn", pieceType, new PawnMovement());
     }
 }
