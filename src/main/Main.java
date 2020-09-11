@@ -2,6 +2,7 @@ package main;
 
 import core.abstractions.IBoard;
 import core.models.Board;
+import core.models.Cell;
 import main.abstractions.IBoardPrinter;
 import main.models.BoardPrinter;
 
@@ -13,6 +14,5 @@ public class Main {
         board.init();
         board.reset();
         boardPrinter.print(board);
-
     }
 }
