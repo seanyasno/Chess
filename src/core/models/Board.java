@@ -42,9 +42,7 @@ public class Board implements IBoard {
     @Override
     public void movePiece(ICell currentCell, ICell newCell) {
         if (canMove(currentCell, newCell)) {
-            currentCell.getPiece().getMovement().move();
-            newCell.setPiece(currentCell.getPiece());
-            currentCell.setPiece(null);
+            currentCell.getPiece().getMovement().move(currentCell, newCell);
         }
     }
 
@@ -63,6 +61,16 @@ public class Board implements IBoard {
             default:
                 return 0;
         }
+    }
+
+    @Override
+    public IPiece getPieceAt(int x, int y) {
+        return cells[x][y].getPiece();
+    }
+
+    @Override
+    public ICell getCellAt(int x, int y) {
+        return cells[x][y];
     }
 
     @Override

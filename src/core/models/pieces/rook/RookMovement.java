@@ -2,9 +2,9 @@ package core.models.pieces.rook;
 
 import core.abstractions.IBoard;
 import core.abstractions.ICell;
-import core.abstractions.IPieceMovement;
+import core.abstractions.PieceMovementBase;
 
-public class RookMovement implements IPieceMovement {
+public class RookMovement extends PieceMovementBase {
     @Override
     public boolean canMove(IBoard board, ICell currentCell, ICell newCell) {
         int widthDifference = Math.abs(currentCell.getY() - newCell.getY());
@@ -20,10 +20,5 @@ public class RookMovement implements IPieceMovement {
                 return false;
         }
         return newCell.isEmpty() || (newCell.getPiece().getPieceType() != currentCell.getPiece().getPieceType());
-    }
-
-    @Override
-    public void move() {
-
     }
 }

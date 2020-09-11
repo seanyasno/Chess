@@ -2,16 +2,11 @@ package core.models.pieces.king;
 
 import core.abstractions.IBoard;
 import core.abstractions.ICell;
-import core.abstractions.IPieceMovement;
+import core.abstractions.PieceMovementBase;
 
-public class KingMovement implements IPieceMovement {
+public class KingMovement extends PieceMovementBase {
     @Override
     public boolean canMove(IBoard board, ICell currentCell, ICell newCell) {
         return false;
-    }
-
-    @Override
-    public void move() {
-
     }
 }

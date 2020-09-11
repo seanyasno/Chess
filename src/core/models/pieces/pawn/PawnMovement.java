@@ -2,9 +2,10 @@ package core.models.pieces.pawn;
 
 import core.abstractions.IBoard;
 import core.abstractions.ICell;
-import core.abstractions.IPieceMovement;
+import core.abstractions.IPiece;
+import core.abstractions.PieceMovementBase;
 
-public class PawnMovement implements IPieceMovement {
+public class PawnMovement extends PieceMovementBase {
     private boolean firstMove;
 
     public PawnMovement() {
@@ -27,10 +28,10 @@ public class PawnMovement implements IPieceMovement {
     }
 
     @Override
-    public void move() {
-        if (firstMove) {
+    public IPiece move(ICell currentCell, ICell newCell) {
+        if (firstMove)
             firstMove = false;
-        }
+        return super.move(currentCell, newCell);
     }
 
     private boolean canEat(ICell currentCell, ICell newCell) {
