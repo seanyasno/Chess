@@ -34,7 +34,7 @@ public class BoardReset implements IBoardReset {
     }
 
     private void setPawns() {
-        for (int y = 1; y < board.getWidth(); y++) {
+        for (int y = 0; y < board.getWidth(); y++) {
             board.getCells()[1][y].setPiece(new Pawn(PieceType.WHITE));
             board.getCells()[board.getHeight() - 2][y].setPiece(new Pawn(PieceType.BLACK));
         }
