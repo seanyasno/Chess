@@ -43,12 +43,16 @@ public class Board implements IBoard {
 
     @Override
     public void movePiece(ICell currentCell, ICell newCell) {
-
+        if (canMove(currentCell, newCell)) {
+            currentCell.getPiece().getMovement().move();
+            newCell.setPiece(currentCell.getPiece());
+            currentCell.setPiece(null);
+        }
     }
 
     @Override
     public boolean canMove(ICell currentCell, ICell newCell) {
-        return false;
+        return currentCell.getPiece().getMovement().canMove(this, currentCell, newCell);
     }
 
     @Override
@@ -64,10 +68,10 @@ public class Board implements IBoard {
     }
 
     @Override
-    public void Reset() {
-        for (int x = 0; x < width; x++) {
-            cells[x][1].setPiece(new Pawn(PieceType.WHITE));
-            cells[x][height-1].setPiece(new Pawn(PieceType.BLACK));
+    public void reset() {
+        for (int y = 0; y < width; y++) {
+            cells[1][y].setPiece(new Pawn(PieceType.WHITE));
+            cells[height-2][y].setPiece(new Pawn(PieceType.BLACK));
         }
     }
 

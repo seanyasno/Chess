@@ -13,13 +13,16 @@ public class PawnMovement implements IPieceMovement {
 
     @Override
     public boolean canMove(IBoard board, ICell currentCell, ICell newCell) {
-        int heightDifference = newCell.getY() - currentCell.getY();
+        int direction = board.getPieceTypeDirection(currentCell.getPiece());
+        int heightDifference = (newCell.getX() - currentCell.getX()) * direction;
+        int widthDifference = (newCell.getY() - currentCell.getY());
         if (heightDifference <= 2 && heightDifference != 0) {
-            if (heightDifference == 1 || (heightDifference == 2 && firstMove)) {
-                return newCell.isEmpty();
+            if (heightDifference == 1) {
+                return (newCell.isEmpty() && widthDifference == 0) || canEat(currentCell, newCell);
+            } else {
+                return firstMove && newCell.isEmpty() && board.getCells()[currentCell.getX() + direction][currentCell.getY()].isEmpty();
             }
         }
-
         return false;
     }
 
@@ -28,5 +31,14 @@ public class PawnMovement implements IPieceMovement {
         if (firstMove) {
             firstMove = false;
         }
+    }
+
+    private boolean canEat(ICell currentCell, ICell newCell) {
+        if (newCell.getPiece() == null) return false;
+        int widthDifference = (newCell.getY() - currentCell.getY());
+        if (Math.abs(widthDifference) == 1) {
+            return newCell.getPiece().getPieceType() != currentCell.getPiece().getPieceType();
+        }
+        return false;
     }
 }

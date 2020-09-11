@@ -8,5 +8,5 @@ public interface IBoard {
     void movePiece(ICell currentCell, ICell newCell);
     boolean canMove(ICell currentCell, ICell newCell);
     int getPieceTypeDirection(IPiece piece);
-    void Reset();
+    void reset();
 }
