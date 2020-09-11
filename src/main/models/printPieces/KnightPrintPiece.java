@@ -1,13 +1,9 @@
 package main.models.printPieces;
 
-import core.enums.PieceType;
-import main.abstractions.IPrintPiece;
+import main.abstractions.PrintPieceBase;
 
-public class KnightPrintPiece implements IPrintPiece {
-    @Override
-    public String getSymbol(PieceType pieceType) {
-        if (pieceType == PieceType.BLACK)
-            return "n";
-        return "N";
+public class KnightPrintPiece extends PrintPieceBase {
+    public KnightPrintPiece() {
+        super("N", "n");
     }
 }
